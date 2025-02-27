@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bewkoof Clone</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">MyStore</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropbtn">Shop Now</a>
+        <div class="dropdown-content">
+          <a href="#">Men's Clothing</a>
+          <a href="#">Women's Clothing</a>
+          <a href="#">Accessories</a>
+        </div>
+      </li>
+      <li class="cart-dropdown">
+        <a href="#" class="cart-btn">Cart (<span id="cart-count">0</span>)</a>
+        <div class="cart-content">
+          <div id="cart-items"></div>
+          <a href="#" class="checkout-btn">Checkout</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <h1>Welcome to MyStore</h1>
+    <p>Shop the latest trends in fashion</p>
+    <button>Shop Now</button>
+  </section>
+
+  <!-- Product Grid -->
+  <section class="products">
+    <h2>Featured Products</h2>
+    <div class="product-grid">
+      <!-- Product Cards will be dynamically added here -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 MyStore. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
