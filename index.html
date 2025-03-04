@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bewkoof Clone</title>
+  <title>MyStore - E-commerce</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 <body>
   <!-- Navbar -->
@@ -27,15 +29,63 @@
           <a href="#" class="checkout-btn">Checkout</a>
         </div>
       </li>
+      <li class="auth-dropdown">
+        <button class="auth-btn">Login</button>
+        <div class="auth-content">
+          <div id="login-form" class="auth-form">
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Email" />
+            <input type="password" id="login-password" placeholder="Password" />
+            <button onclick="login()">Login</button>
+            <p>Don't have an account? <a href="#" onclick="showRegister()">Register</a></p>
+          </div>
+          <div id="register-form" class="auth-form" style="display: none;">
+            <h2>Register</h2>
+            <input type="text" id="register-name" placeholder="Name" />
+            <input type="email" id="register-email" placeholder="Email" />
+            <input type="password" id="register-password" placeholder="Password" />
+            <button onclick="register()">Register</button>
+            <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+          </div>
+        </div>
+      </li>
     </ul>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <h1>Welcome to MyStore</h1>
-    <p>Shop the latest trends in fashion</p>
-    <button>Shop Now</button>
-  </section>
+  <!-- Dynamic Banner (Carousel) -->
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="banner1.jpg" alt="Banner 1" />
+        <div class="banner-text">
+          <h2>New Arrivals</h2>
+          <p>Shop the latest trends in fashion</p>
+          <button>Shop Now</button>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="banner2.jpg" alt="Banner 2" />
+        <div class="banner-text">
+          <h2>Exclusive Deals</h2>
+          <p>Get up to 50% off on selected items</p>
+          <button>Explore Deals</button>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <img src="banner3.jpg" alt="Banner 3" />
+        <div class="banner-text">
+          <h2>Summer Collection</h2>
+          <p>Lightweight and stylish outfits</p>
+          <button>Discover More</button>
+        </div>
+      </div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Navigation -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
 
   <!-- Product Grid -->
   <section class="products">
@@ -50,6 +100,7 @@
     <p>&copy; 2025 MyStore. All rights reserved.</p>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

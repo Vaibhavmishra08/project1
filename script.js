@@ -1,3 +1,21 @@
+const API_URL = "http://localhost:5000/api";
+
+// Initialize Swiper Carousel
+const swiper = new Swiper(".swiper", {
+  loop: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  autoplay: {
+    delay: 3000,
+  },
+});
+
 // Sample product data
 const products = [
   {
@@ -70,24 +88,58 @@ function updateCartUI() {
   cartCount.textContent = cart.length;
 }
 
-// Toggle cart dropdown
-document.addEventListener("DOMContentLoaded", function () {
-  const cartBtn = document.querySelector(".cart-btn");
-  const cartContent = document.querySelector(".cart-content");
+// Show login form
+function showLogin() {
+  document.getElementById("login-form").style.display = "block";
+  document.getElementById("register-form").style.display = "none";
+}
 
-  cartBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-    cartContent.style.display =
-      cartContent.style.display === "block" ? "none" : "block";
+// Show register form
+function showRegister() {
+  document.getElementById("register-form").style.display = "block";
+  document.getElementById("login-form").style.display = "none";
+}
+
+// Register user
+async function register() {
+  const name = document.getElementById("register-name").value;
+  const email = document.getElementById("register-email").value;
+  const password = document.getElementById("register-password").value;
+
+  const response = await fetch(`${API_URL}/auth/register`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, password }),
   });
 
-  // Close cart dropdown when clicking outside
-  document.addEventListener("click", function (e) {
-    if (!e.target.matches(".cart-btn")) {
-      cartContent.style.display = "none";
-    }
+  const data = await response.json();
+  if (response.ok) {
+    localStorage.setItem("token", data.token);
+    alert("Registration successful!");
+  } else {
+    alert(data.msg || "Registration failed");
+  }
+}
+
+// Login user
+async function login() {
+  const email = document.getElementById("login-email").value;
+  const password = document.getElementById("login-password").value;
+
+  const response = await fetch(`${API_URL}/auth/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
   });
-});
+
+  const data = await response.json();
+  if (response.ok) {
+    localStorage.setItem("token", data.token);
+    alert("Login successful!");
+  } else {
+    alert(data.msg || "Login failed");
+  }
+}
 
 // Render products on page load
 document.addEventListener("DOMContentLoaded", renderProducts);
